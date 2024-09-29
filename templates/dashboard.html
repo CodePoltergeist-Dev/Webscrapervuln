@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnerability Monitoring Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vulnerability Monitoring Dashboard</h1>
+        <div id="chart">
+            {{ chart|safe }}
+        </div>
+
+        <h2>Vulnerability Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CVE ID</th>
+                    <th>Published Date</th>
+                    <th>Last Modified</th>
+                    <th>Severity</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vuln in details %}
+                <tr>
+                    <td>{{ vuln.cve_id }}</td>
+                    <td>{{ vuln.published }}</td>
+                    <td>{{ vuln.lastModified }}</td>
+                    <td>{{ vuln.severity }}</td>
+                    <td>{{ vuln.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
